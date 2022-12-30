@@ -1,4 +1,4 @@
-# Side to Side Cross Reference
+# Side to Side Cross Reference Visualization
 
 Visualization of 2 files side to side where
 one of them is a generated version of the other. Line number
