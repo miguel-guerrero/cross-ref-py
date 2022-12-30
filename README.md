@@ -17,37 +17,72 @@ This is an example of a cross reference file:
     1:1
     2:2
     3:3-
-    4-10:7-20
-    11-:21-
+    4-10:7, 9-20
+    11-:8,21-
 
-* left of the ":" represent line numbers on left file
-* right of the ":" represent corresponding line numbers on right file
-* each line represents a group, where lines on the left maps to the ones on right and vice-versa
-* lines number on each side are represented by a comman separated list of numbers or ranges of
+* Left of the ":" represent line numbers on left file.
+* Right of the ":" represent corresponding line numbers on right file.
+* Each line represents a group, where lines on the left map to the lines on right and vice-versa.
+* Lines numbers on each side are represented by a comma separated list of ranges of
   numbers. If a range is open on the right (e.g. 3-) the right side limit is the line before the 
-  minimum line of the next group
+  minimum line of the next group. A range can be a single line number as well (no -).
 
-    in the example above 3:3- maps line 3 (left) to the range 3-6 (right)
+    in the example above 3:3- maps line 3 (left) to the range 3-6 (right) as 7 is the beginning line
+    of the next group on the right.
 
 
-Note that if you have a file including 'line' directives it is straightforward to convert to
-this format (this format being more general)
+Note that if you have a file including `line` directives (see [preprocessor documentation](https://gcc.gnu.org/onlinedocs/cpp/Line-Control.html)), it is straightforward to convert to
+this format (this format being more general).
 
-For example a right file with #line's embedded as follows:
+For example a right file with `#line` directives embedded as follows:
 
-    /---- Line number of right file
-    |
-    v
+    v---- Line number of right file
+    
     1: #line 1   <-- reference to line on left file
     2:
     3: #line 2
     4:
     5:
     6: #line 5
+    7:
+    8:
+    
+Can be represented in this format with the following cross reference file:
 
-Would correspond to:
+    1-:2-
+    2-:4-
+    5-:7-
 
-    1-:1-
-    2-:3-
-    5-:6-
+## Usage
+
+Invoking the script without dependencies shows a GUI. Load left and right files, then cross-reference file.
+
+    ./cross-ref.py
+
+you can also pass the path to these files in the command line:
+
+* if no argument is given, a clean slate GUI opens up
+* if 1 argument is given is assumed left file and will be loaded when the GUI opens up
+
+    `./cross-ref.py pathToLeft`
+    
+* if 2 arguments are given they are assumed to be left and right file respectively and will be loaded when the GUI opens up
+
+    `./cross-ref.py pathToLeft pathToRight`
+
+* if 3 arguments are given they are assumed to be left, right and cross reference file respectively and will be loaded when the GUI opens up
+
+    `./cross-ref.py pathToLeft pathToRight pathToCrossRef`
+
+Clicking a line on one file will highlight the corresponding lines on the same group on the same side and on the other side.
+
+## Dependencies
+
+This script uses `python3` (version 3.10.9 at time of testing but any should be ok) and `tkinter`. It has been tested in MacOS. 
+In MacOS `tkinter` was installed for the above version of `python3` as:
+
+    brew install python-tk@3.10
+    
+A similar approach is expected for other versions.
+
 
