@@ -2,7 +2,7 @@
 
 Visualization of 2 files side to side where
 one of them is a generated version of the other. Line number
-correspondence is provided in a separate file.
+correspondence is provided in a separate cross reference file.
 
 # Introduction
 
