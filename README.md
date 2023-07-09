@@ -97,4 +97,8 @@ In MacOS `tkinter` was installed for the above version of `python3` as:
     
 A similar approach is expected for other versions.
 
+## Example of use
 
+    $ ./cross-ref.py example/left.txt example/right.txt example/cross.txt
+
+![screenshot](screenshot.png)
