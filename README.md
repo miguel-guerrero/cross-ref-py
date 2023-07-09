@@ -53,6 +53,8 @@ Can be represented in this format with the following cross reference file:
     2-:4-
     5-:7-
 
+Where the line number `n` on the left comes from the `#line n` directive, and the one on the right is the line number where the `#line n` directive is located plus one.
+
 ## Usage
 
 Invoking the script without dependencies shows a GUI. Load left and right files, then cross-reference file.
