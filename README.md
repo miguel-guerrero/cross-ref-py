@@ -4,6 +4,16 @@ Visualization of 2 files side to side where
 one of them is a generated version of the other. Line number
 correspondence is provided in a separate cross reference file.
 
+This utility is useful to visualize original source code when navigating 
+a code listing generated from it, tipycally a less readable lower level 
+representation. Allows you to:
+
+- Visualize corresponding source code when pointing to a specific piece of the
+generated code.
+
+- Visualize corresponding low level code that has been generated from a portion
+of high level code.
+
 # Introduction
 
 This utility displays two files side to side. When one line in
